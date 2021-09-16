@@ -1,4 +1,5 @@
-from pymongo import MongoClient
+from pymongo import ALL, MongoClient
+
 
 def getData():
     client = MongoClient('localhost', 27017)
@@ -8,3 +9,4 @@ def getData():
     
     for x in collection.find({} , {"major.inlatt" : 1 , "major.inlongt" : 1}):
         print(x)
+        

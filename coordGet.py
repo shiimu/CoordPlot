@@ -19,9 +19,3 @@ def addData():
     db = client['coordinates']
     collection = db['CoordPlot']
     collection.insert(dumped_data)
-#Look at this!!! needs to refresh the datadump from api
-def refreshData():
-    global data_const
-    data_const = dumped_data['']
-    data_const.clear()
-    return
