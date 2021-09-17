@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+    <title>Coordination Plotting</title>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            }
+        .input[type=text] {
+            background-color: #3CBC8D;
+            color: white;
+            }
+         .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(2px);
+            }
+
+          </style>
+</head>
+  <body>
+    <h1>Get coordinates from current location and plot them on the map. </h1>
+    <h2>
+        <form action="/Retcoords/">
+        <button class="button" type="submit" action="/Retcoords/"><a href="/Retcoords/"></a>Get Coordinates</button>
+    </form>
+    </h2>
+    <form action="/Retcoords/">
+        <button class="button" type="submit" action="/Retcoords/"><a href="/Retcoords/"></a>Clear Map</button>
+    </form>
+    </h3>
+    <embed type="text/html" src="map" width="500" height="200">
+    <h4>
+      <input class = "input">Latest coords
+      </input>
+    </h4>
+    </body>
+</html>
+
