@@ -1,4 +1,5 @@
 from pymongo import ALL, MongoClient
+import pymongo
 import misc
 
 global last_coord

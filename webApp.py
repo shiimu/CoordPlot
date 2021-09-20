@@ -24,7 +24,6 @@ def ret_C():
     return redirect("/")
 @app.route('/clrgrp/')
 def clear_Group():
-    
     misc.dictClear()
     return redirect("/")
 
