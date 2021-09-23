@@ -1,9 +1,6 @@
-import pickle
 from flask import Flask, render_template, json, jsonify, redirect
 import dbGet
 import coordGet
-import misc
-import map
 app = Flask(__name__)
 
 
@@ -18,13 +15,18 @@ def omap():
 @app.route('/Retcoords/')
 def ret_C():
     coordGet.queryCoords()
-    dbGet.findLast()
-    from dbGet import last_coord
- 
+    dbGet.getData()
     return redirect("/")
+
+@app.route('/saveGpx/')
+def save_Gpx():
+    import gpxMake
+    gpxMake.addGPXData()
+    return redirect("/")
+
 @app.route('/clrgrp/')
 def clear_Group():
-    misc.dictClear()
+    dbGet.dictClear()
     return redirect("/")
 
 if __name__ == "__main__":

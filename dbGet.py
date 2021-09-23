@@ -1,31 +1,56 @@
+import re
+from typing import MappingView
 from pymongo import ALL, MongoClient
 import pymongo
-import misc
+import os
 
-global last_coord
-last_coord = []
+
+global coordListLatt
+global coordListLongt
+coordListLongt = []
+coordListLatt = []
+
 def getData():
-    client = MongoClient('localhost', 27017)
-    db = client['CoordsPlot']
-    collection = db['coordinates']
-    #query for latt and longtitude
-    #global query_coords
-    #query_coords = {"major.inlatt" : 1 , "major.inlongt" : 1}
-    #for x in collection.find({} , {"major.inlatt" : 1 , "major.inlongt" : 1}):
-    #    print(x)
-#find_one should retrieve the latest one added if there are multiple matches.
-    last_coord = collection.find_one({}, {"major.inlatt" : 1 , "major.inlongt" : 1})
-    #print(type(last_coord))
-def findLast():
-    
-    client = MongoClient('localhost', 27017)
-    db = client['CoordsPlot']
-    collection = db['coordinates']
-    last_coord = collection.find({}, {"major.inlatt" : 1 , "major.inlongt" : 1}).sort("$natural", pymongo.DESCENDING).limit(1)
-    for x in last_coord:
-        print((x))
 
-def addToDict():
-    #From retrieved and sorted add to dictionary coordGroup[] 
-    #print(coordGroup)
-    return
+    global last_coord
+    client = MongoClient('localhost', 27017)
+    db = client['CoordsPlot']
+    collection = db['coordinates']
+    last_coord = collection.find({}, {"major.inlatt" : 1 , "major.inlongt" : 1,'_id': False}).sort("$natural", pymongo.DESCENDING).limit(1)    
+    sorting()
+
+def sorting():
+    # accessing latt and longt from the dictionary
+    global longt
+    global latt
+    l = {}
+    for x in (last_coord):
+        l['sorted'] = x
+    withoutS = l['sorted']    
+    withoutM = withoutS['major']
+    longt = withoutM['inlongt']
+    latt = withoutM['inlatt']
+    print(longt,latt)
+    import mapEmb
+    mapEmb.centerLocation()
+    toList()
+    return longt, latt
+
+def toList():
+
+    coordListLongtAdd = coordListLongt.extend([longt])
+    coordListLattAdd = coordListLatt.extend([latt])
+    print(coordListLatt, coordListLongt )
+
+def dictClear():
+    #Also drop the collection
+    client = MongoClient('localhost', 27017)
+    db = client['CoordsPlot']
+    collection = db['coordinates']
+    if collection.count() != 0:
+        collection.drop()
+#Remove the gpx file as well    
+    try:
+        os.remove("locations.gpx")
+    except:
+        print('gpx file not found!')

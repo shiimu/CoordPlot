@@ -1,7 +1,5 @@
 import requests
-import json
 from pymongo import MongoClient, collection
-import dbGet
 
 # Get random coords from https://api.3geonames.org/?randomland=yes <- yes for random.  https://api.3geonames.org/randomland.FI Fi for finnish location
 # 
