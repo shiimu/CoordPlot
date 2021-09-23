@@ -4,7 +4,7 @@ from pymongo.mongo_client import MongoClient
 
 def addGPXData():
     
-    from dbGet import longt,latt, coordListLongt,coordListLatt
+    from dbGet import coordListLongt,coordListLatt
 
     gpx = gpxpy.gpx.GPX()
 
@@ -13,8 +13,8 @@ def addGPXData():
 
     gpx_segment = gpxpy.gpx.GPXTrackSegment()
     gpx_track.segments.append(gpx_segment)
-
-    gpx_segment.points.append(gpxpy.gpx.GPXTrackPoint(latt, longt))
+    for i,j in zip(coordListLongt, coordListLatt):
+            gpx_segment.points.append(gpxpy.gpx.GPXTrackPoint(j, i))
 
 #Trying to get it to work with a simple file before going into mongodb.
     print('Created GPX File:', gpx.to_xml())
