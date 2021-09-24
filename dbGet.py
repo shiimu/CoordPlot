@@ -3,6 +3,7 @@ from typing import MappingView
 from pymongo import ALL, MongoClient
 import pymongo
 import os
+import folium
 
 
 global coordListLatt
@@ -54,3 +55,7 @@ def dictClear():
         os.remove("locations.gpx")
     except:
         print('gpx file not found!')
+    map1 = folium.Map(location=[latt, longt], zoom_start=8)
+    map1.save("./templates/map.html")
+    coordListLatt.clear()
+    coordListLongt.clear()

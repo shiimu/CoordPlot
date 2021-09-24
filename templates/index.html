@@ -14,8 +14,9 @@
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
-            display: inline-block;
             font-size: 16px;
+            border: 1px solid green;
+            float: left;
             }
         .input[type=text] {
             background-color: #3CBC8D;
@@ -26,28 +27,38 @@
             box-shadow: 0 5px #666;
             transform: translateY(2px);
             }
-
+          .btn.group button::after{
+            content: "";
+            clear: both;
+            display: table;
+          }
+          .btn-group button:not(:last-child) {
+            border-right: none;
+          }
           </style>
 </head>
   <body>
     <h1>Get coordinates from current location and plot them on the map. </h1>
     <h2>
+      <div class="btn-group">
         <form action="/Retcoords/">
-        <button class="button" type="submit" action="/Retcoords/"><a href="/Retcoords/"></a>Get Coordinates</button>
-      </form>
-    </h2>
-    <form action="/clrgrp/">
+          <button class="button" type="submit" action="/Retcoords/"><a href="/Retcoords/"></a>Get Coordinates</button>
+        </form>
+        <form action="/saveGpx/">
+          <button class="button" type="submit" action="/saveGpx/"><a href="/saveGpx/"></a>Save to gpx and plot Coordinates</button>
+        </form>
+      <form action="/clrgrp/">
         <button class="button" type="submit" action="/clrgrp/"><a href="/clrgrp/"></a>Clear Map</button>
     </form>
-    </h3>
-    <embed type="text/html" src="map" width="500" height="200">
+      </div>
+        
+    </h2>
     <h4>
+      <embed type="text/html" src="map" width="1000" height="400">
+
       <input class = "input">Latest coords
       </input>
     </h4>
-    <h5> <form action="/saveGpx/">
-      <button class="button" type="submit" action="/saveGpx/"><a href="/saveGpx/"></a>Save and plot Coordinates</button>
-    </form></h5>
     </body>
 </html>
 
