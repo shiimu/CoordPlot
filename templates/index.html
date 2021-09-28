@@ -8,38 +8,33 @@
     <title>Coordination Plotting</title>
     <style>
         .button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
+            background-color: #BDDAB1; /* Green */
+            color: #306818;
+            padding: 20px 32px;
             text-align: center;
             text-decoration: none;
             font-size: 16px;
             border: 1px solid green;
-            float: left;
-            }
-        .input[type=text] {
-            background-color: #3CBC8D;
-            color: white;
+            margin: 10px;
+            
             }
          .button:active {
             background-color: #3e8e41;
             box-shadow: 0 5px #666;
-            transform: translateY(2px);
             }
-          .btn.group button::after{
-            content: "";
-            clear: both;
-            display: table;
+          .btn-group{  
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
           }
-          .btn-group button:not(:last-child) {
-            border-right: none;
+          .openmap  {
+            text-align: center;
           }
           </style>
 </head>
   <body>
-    <h1>Get coordinates from current location and plot them on the map. </h1>
-    <h2>
+    <h1>
       <div class="btn-group">
         <form action="/Retcoords/">
           <button class="button" type="submit" action="/Retcoords/"><a href="/Retcoords/"></a>Get Coordinates</button>
@@ -52,13 +47,12 @@
     </form>
       </div>
         
-    </h2>
-    <h4>
+    </h1>
+    <h2>
+      <div class="openmap">
       <embed type="text/html" src="map" width="1000" height="400">
-
-      <input class = "input">Latest coords
-      </input>
-    </h4>
+      </div>
+    </h2>
     </body>
 </html>
 

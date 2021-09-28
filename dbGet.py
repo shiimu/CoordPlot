@@ -55,6 +55,9 @@ def dictClear():
         os.remove("locations.gpx")
     except:
         print('gpx file not found!')
+    
+    latt = "60.171944"
+    longt = "24.941389"
     map1 = folium.Map(location=[latt, longt], zoom_start=8)
     map1.save("./templates/map.html")
     coordListLatt.clear()
