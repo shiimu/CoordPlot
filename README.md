@@ -1,10 +1,5 @@
 # CoordPlot
  Proof of concept
-Why I chose this project
-What I initially had intended to design
-What I ended up designing
-How it went
-What the future holds.
  
 As ive said a couple of times, Im really interested in hiking and bikepacking/touring. I use a lot of different types of tools and gadgets on my trips. Mainly to keep myself safe. What I also use a lot is my phone. Since there isn’t enough money in the universe to be able to buy all the gadgets in the store that I need. So I rely on my phone for gps, navigation and also as an e-reader and music player and podcast player and flashlight and so on. Using all those features cost hecka lot of battery though. I have seen the movie 127 hours, where the James Franco has his arm get stuck between two rocks. And since he didn’t tell anyone where he was, he had to rely on himself to get out of the situation, by cutting his arm off. I don’t like to cut my arm off. So I would like to have my safety contacts know where I am at all times. That, though, means that I currently need to use an app with features that I don’t need. And those extra features eat in the battery time.
 What I thought of then is to have an app on my phone that only uses the gps positioning to get my coordinates in every 5 minutes or so. That way it would use the resources much much less than a multipurpose app would. So I came up with this proof of concept that would, down the line turn into a mobile app that would plot the course ive gone through since starting a trip. And it would be available to be viewed by my safety contacts.
