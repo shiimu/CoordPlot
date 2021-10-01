@@ -19,21 +19,16 @@ def addGPXData():
         for i,j in zip(coordListLongt, coordListLatt):
                 gpx_segment.points.append(gpxpy.gpx.GPXTrackPoint(j, i))
     
-#Trying to get it to work with a simple file before going into mongodb.
-#Create the gpx file and write the data in it in xml format.
+        #Trying to get it to work with a simple file before going into mongodb.
+        #Create the gpx file and write the data in it in xml format.
         print('Created GPX File:', gpx.to_xml())
         with open("locations.gpx", "w") as f:
             f.write(gpx.to_xml())
         drawGpx()
     except:
         print('Error! Probably no coordinates!')
-    #client = MongoClient('localhost', 27017)
-    #db = client['CoordsPlot']
-    #collection = db['gpxData']
-    #collection.insert(gpx.to_xml())
 
-
-    # Draw polyline from the coordinates
+# Draw polyline from the coordinates
 def drawGpx():
     #Read the gpx file and from the segment point add long and lattitude to the points list.
     gpx_file = open('C:\Github\CoordPlot\locations.gpx', 'r')
@@ -43,20 +38,19 @@ def drawGpx():
         for segment in track.segments:        
             for point in segment.points:
                 points.append(tuple([point.latitude, point.longitude]))
-    #print(points)
     
     ave_lat = sum(p[0] for p in points)/len(points)
     ave_lon = sum(p[1] for p in points)/len(points)
  
-# Load map centred on average coordinates
+    #Load map centred on average coordinates
     my_map = folium.Map(location=[ave_lat, ave_lon], zoom_start=8)
  
-#add a markers
+    #Add markers
     for each in points:  
         folium.Marker(each).add_to(my_map)
  
-#fadd lines
+    #Add lines
     folium.PolyLine(points, color="red", weight=2.5, opacity=1).add_to(my_map)
  
-# Save map
+    #Save map
     my_map.save("./templates/map.html")

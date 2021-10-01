@@ -10,11 +10,11 @@ def queryCoords():
     response = requests.request('GET', url,)
     dumped_data = response.json()
     
-#Test data
+    #Test data
     #print(dumped_data)
     addData()
     print("data queried and added to the database")
-#Create database and insert queried data to the database
+    #Create database and insert queried data to the database
 def addData():
     client = MongoClient('localhost', 27017)
     db = client['CoordsPlot']

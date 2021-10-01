@@ -1,4 +1,3 @@
-import re
 from typing import MappingView
 from pymongo import ALL, MongoClient
 import pymongo
@@ -12,8 +11,8 @@ coordListLongt = []
 coordListLatt = []
 
 def getData():
-# Retrieve data from the database and sort in natural order and from the last added to the first. Must include
-# major.inlatt and major.inglongt, dont show "_id"
+    # Retrieve data from the database and sort in natural order and from the last added to the first. Must include
+    # major.inlatt and major.inglongt, dont show "_id"
     global last_coord
     client = MongoClient('localhost', 27017)
     db = client['CoordsPlot']
@@ -52,14 +51,14 @@ def dictClear():
     collection = db['coordinates']
     if collection.count() != 0:
         collection.drop()
-#Remove the gpx file as well    
+    #Remove the gpx file as well    
     try:
         os.remove("locations.gpx")
     except:
         print('gpx file not found!')
 
-#Default coordinates set to center on Helsinki. Its done to rewrite the map so the polylines dont show.
-#Empty lonitude and lattitude lists.
+    #Default coordinates set to center on Helsinki. Its done to rewrite the map so the polylines dont show.
+    #Empty the lonitude and lattitude lists.
     latt = "60.171944"
     longt = "24.941389"
     map1 = folium.Map(location=[latt, longt], zoom_start=8)
